@@ -24,7 +24,7 @@ As I am using Behave, which is an automation Framework, I use python as my main 
 https://phptravels.com/demo/ is the main page under test.
 
 
-##2. API Automation:
+## 2. API Automation:
 For the API automation I use:
 - Behave
 - Request
