@@ -20,16 +20,21 @@ For the web automation I use the following tecnologies:
 ###Python
 As I am using Behave, which is an automation Framework, I use python as my main programming language.
 
+### Web under automation
+https://phptravels.com/demo/ is the main page under test.
+
+
 ##2. API Automation:
 For the API automation I use:
 - Behave
 - Request
 - Python
 
-## Why Behave for API testing
+### Why Behave for API testing
 Why do I use behave for API testing? I strongly believe that it is important to address all our tests cases to everyone, so that understand the product under testing as well as its behavior. 
 
-## Request
+### Request
 Request is the main library for api calls integrated with python.
 
- 
+### API under automation 
+https://petstore.swagger.io/ is the swagger for the API testing
