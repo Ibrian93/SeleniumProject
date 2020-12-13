@@ -4,7 +4,7 @@ Here I have 2 main project in WIP:
 - Web Automation
 - API automation
 
-## 1. Web Automation:
+## Web Automation:
 For the web automation I use the following tecnologies:
 - Behave
 - Selenium
