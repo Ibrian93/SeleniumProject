@@ -1,5 +1,5 @@
 import requests
-from petstore_api.user.models import user_models
+from api_testing.petstore_api.user.models.user_model import User
 from behave import given, when, then
 
 @given("a user with the following data:")
