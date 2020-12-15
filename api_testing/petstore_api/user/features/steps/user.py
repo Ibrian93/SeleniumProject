@@ -3,7 +3,7 @@ from api_testing.petstore_api.user.models.user_model import User
 from behave import given, when, then
 
 
-@given("a user with the following data:")
+@given('a user with the following data')
 def step_impl(context):
     for row in context.table:
         context.user = User(id=1, 
@@ -13,3 +13,14 @@ def step_impl(context):
                             email=row["email"],
                             password=row["password"],
                             phone=row["phone"])
+@given('the user is active')
+def step_impl(context):
+    pass
+
+@when('it is created the user')
+def step_impl(context):
+    pass
+
+@then('the user is created correctly')
+def step_impl(context):
+    pass
