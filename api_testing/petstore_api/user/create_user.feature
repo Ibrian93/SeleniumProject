@@ -1,4 +1,4 @@
-Feature: Get user by its username
+Feature: Create a user in the petstore api 
 
 Scenario: A user can be created via API
     Given a user with the following data:
