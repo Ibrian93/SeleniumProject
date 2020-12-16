@@ -15,7 +15,7 @@ def step_impl(context):
                             phone=row["phone"])
 @given('the user is active')
 def step_impl(context):
-    pass
+    context.user.status = 1
 
 @when('it is created the user')
 def step_impl(context):
