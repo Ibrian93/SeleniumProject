@@ -19,7 +19,18 @@ def step_impl(context):
 
 @when('it is created the user')
 def step_impl(context):
-    pass
+    base_url = 'https://petstore.swagger.io/v2/'
+    endpoint = 'user'
+    header = {'accept': 'application/json', 'Content-type': 'application/json'}
+    body = {'id': context.user.id,
+            'username': context.user.username,
+            'firstname': context.user.firstname,
+            'lastname': context.user.lastname,
+            'email': context.user.email,
+            'password': context.user.password,
+            'phone': context.user.phone,
+            'userStatus': context.user.status}
+    requests.post(base_url + endpoint, headers=header, data=body)
 
 @then('the user is created correctly')
 def step_impl(context):
