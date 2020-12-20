@@ -1,4 +1,5 @@
 import requests
+import json
 from api_testing.petstore_api.user.models.user_model import User
 from behave import given, when, then
 
@@ -30,8 +31,7 @@ def step_impl(context):
             'password': context.user.password,
             'phone': context.user.phone,
             'userStatus': context.user.status}
-    print(body)
-    context.r = requests.post(base_url + endpoint, headers=header, data=body)
+    context.r = requests.post(base_url + endpoint, headers=header, data=json.dumps(body))
 
 @then('the user is created correctly')
 def step_impl(context):
