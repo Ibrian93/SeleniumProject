@@ -30,8 +30,10 @@ def step_impl(context):
             'password': context.user.password,
             'phone': context.user.phone,
             'userStatus': context.user.status}
-    requests.post(base_url + endpoint, headers=header, data=body)
+    print(body)
+    context.r = requests.post(base_url + endpoint, headers=header, data=body)
 
 @then('the user is created correctly')
 def step_impl(context):
-    pass
+    print(context.r.status_code)
+    assert context.r.status_code == 200
