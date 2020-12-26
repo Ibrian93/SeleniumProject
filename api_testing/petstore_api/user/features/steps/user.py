@@ -35,5 +35,4 @@ def step_impl(context):
 
 @then('the user is created correctly')
 def step_impl(context):
-    print(context.r.status_code)
     assert context.r.status_code == 200
