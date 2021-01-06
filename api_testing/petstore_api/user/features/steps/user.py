@@ -1,6 +1,7 @@
 import requests
 import json
 from api_testing.petstore_api.user.models.user_model import User
+from api_testing.petstore_api.user.utils.constants import BASE_URL
 from behave import given, when, then
 
 
@@ -20,7 +21,6 @@ def step_impl(context):
 
 @when('it is created the user')
 def step_impl(context):
-    base_url = 'https://petstore.swagger.io/v2/'
     endpoint = 'user'
     header = {'accept': 'application/json', 'Content-type': 'application/json'}
     body = {'id': context.user.id,
@@ -31,7 +31,7 @@ def step_impl(context):
             'password': context.user.password,
             'phone': context.user.phone,
             'userStatus': context.user.status}
-    context.r = requests.post(base_url + endpoint, headers=header, data=json.dumps(body))
+    context.r = requests.post(BASE_URL + endpoint, headers=header, data=json.dumps(body))
 
 @then('the user is created correctly')
 def step_impl(context):
