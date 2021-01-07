@@ -1,7 +1,7 @@
 import requests
 import json
 from api_testing.petstore_api.user.models.user_model import User
-from api_testing.petstore_api.user.utils.constants import BASE_URL
+from api_testing.petstore_api.user.utils.constants import USER_ENDPOINT
 from behave import given, when, then
 
 
@@ -23,7 +23,6 @@ def step_impl(context):
 @given('it is created the user')
 @when('it is created the user')
 def step_impl(context):
-    endpoint = 'user'
     header = {'accept': 'application/json', 'Content-type': 'application/json'}
     context.body = {'id': context.user.id,
             'username': context.user.username,
@@ -33,11 +32,11 @@ def step_impl(context):
             'password': context.user.password,
             'phone': context.user.phone,
             'userStatus': context.user.status}
-    context.r = requests.post(BASE_URL + endpoint, headers=header, data=json.dumps(context.body))
+    context.r = requests.post(USER_ENDPOINT, headers=header, data=json.dumps(context.body))
 
 @when('the user information is retrieved')
 def step_impl(context): 
-    context.res = requests.get(BASE_URL + 'user/' + context.user.username)
+    context.res = requests.get(USER_ENDPOINT + context.user.username)
 
 @then('the information is retrieved correcly')
 def step_impl(context):
