@@ -51,7 +51,6 @@ def step_impl(context):
 @then('the information retrieved matches with the created user')
 def step_impl(context):
     response_info = context.res.text
-    
     json_info = json.loads(response_info)
     for key in json_info:
         assert json_info[key] == context.body[key]
