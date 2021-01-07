@@ -19,6 +19,7 @@ def step_impl(context):
 def step_impl(context):
     context.user.status = 1
 
+@given('it is created the user')
 @when('it is created the user')
 def step_impl(context):
     endpoint = 'user'
@@ -32,6 +33,15 @@ def step_impl(context):
             'phone': context.user.phone,
             'userStatus': context.user.status}
     context.r = requests.post(BASE_URL + endpoint, headers=header, data=json.dumps(body))
+
+@when('the user information is retrieved')
+def step_impl(context): 
+    context.res = requests.get(BASE_URL + 'user/' + 2 context.user.username)
+
+@then('the information is retrieved correcly')
+def step_impl(context):
+    assert context.res.status_code == 200
+
 
 @then('the user is created correctly')
 def step_impl(context):
