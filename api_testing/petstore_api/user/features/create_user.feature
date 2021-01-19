@@ -35,4 +35,4 @@ Scenario: The information retrieved has the correct response model
     And the user is active
     And it is created the user
     When the user information is retrieved
-    Then the response body model should be displayed correctly
+    Then the response body model should have the correct model
