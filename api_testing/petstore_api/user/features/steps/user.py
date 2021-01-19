@@ -28,8 +28,8 @@ def step_impl(context):
     header = {'accept': 'application/json', 'Content-type': 'application/json'}
     context.body = {'id': context.user.id,
             'username': context.user.username,
-            'firstname': context.user.firstname,
-            'lastname': context.user.lastname,
+            'firstName': context.user.firstname,
+            'lastName': context.user.lastname,
             'email': context.user.email,
             'password': context.user.password,
             'phone': context.user.phone,
