@@ -1,7 +1,7 @@
 import requests
 import json
 from api_testing.petstore_api.user.models.user_model import User
-from api_testing.petstore_api.user.models.get_user_body import user
+from api_testing.petstore_api.user.contract.get_user_body import user
 from api_testing.petstore_api.user.utils.constants import USER_ENDPOINT
 from behave import given, when, then
 from schema import Schema
@@ -60,7 +60,6 @@ def step_impl(context):
 def step_impl(context):
     response_info = context.res.text
     json_info = json.loads(response_info)
-    print(json_info)
     user.validate(json_info)
 
     
