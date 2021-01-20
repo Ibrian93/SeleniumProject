@@ -45,3 +45,20 @@ https://petstore.swagger.io/ is the swagger for the API testing
 To run it, you simply need to run the command behave followed by the route of the location of the feature file.
 
 That is: 
+```
+behave python_testing/home_page/demo_page.feature
+```
+
+## Api automation test
+In order to run the tests, the project path must be added to the PYTHONPATH. 
+Open your `.bashrc` and add the following config
+```
+PYTHONPATH={path_to_the_project}/selenium_project/api_testing:$PYTHONPATH
+export PYTHONPATH
+```
+that will allow us to add the project to the system environment variables so Python could load all the modules. (It is recommended to reboot your computer)
+
+Once this step has been completed, go to the `selenium_project` folder and launch the tests with the following command
+```
+behave api_testing/petstore_api/user/features/create_user.feature
+```
