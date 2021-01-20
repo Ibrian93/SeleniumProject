@@ -1,6 +1,6 @@
 # Automation Portfolio
 In this project you will find out my personal portfolio for test automation purposes.
-Here I have 2 main project in WIP:
+Here I have 2 main project:
 - Web Automation
 - API automation
 
@@ -38,3 +38,10 @@ Request is the main library for api calls integrated with python.
 
 ### API under automation 
 https://petstore.swagger.io/ is the swagger for the API testing
+
+
+# How to run the automated tests?
+## Web Test automation
+To run it, you simply need to run the command behave followed by the route of the location of the feature file.
+
+That is: 
