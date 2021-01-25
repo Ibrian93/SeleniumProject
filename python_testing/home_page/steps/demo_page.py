@@ -17,4 +17,4 @@ def website_navigation(context):
 @given("the title is available in home")
 def assert_title(context):
     title = context.browser.find_element_by_css_selector('h2.wow.fadeIn.upper.animated')
-    assert_equal(title.text, 'APPLICATION TEST DRIVE')
+    assert_equal(title.text, 'Application Test Drive')
