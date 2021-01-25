@@ -46,8 +46,14 @@ To run it, you simply need to run the command behave followed by the route of th
 
 That is: 
 ```
-behave python_testing/home_page/demo_page.feature
+cd python_testing
+behave home_page/demo_page.feature
 ```
+Take into account that if you would like to run the automation tests, you must have the chrome binary in your ${HOME} folder. 
+
+Also, it has been implemented a line of codes where the webdriver is initialized remotely so it could be launched with the Zalenium Dockers tool. For more information, take a look at the following documentation: 
+https://opensource.zalando.com/zalenium/
+
 
 ## Api automation test
 In order to run the tests, the project path must be added to the PYTHONPATH. 
