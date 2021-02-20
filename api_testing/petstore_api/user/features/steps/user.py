@@ -4,7 +4,6 @@ from api_testing.petstore_api.user.models.user_model import User
 from api_testing.petstore_api.user.contract.get_user_body import user
 from api_testing.petstore_api.user.utils.constants import USER_ENDPOINT
 from behave import given, when, then
-from schema import Schema
 
 
 @given('a user with the following data')
