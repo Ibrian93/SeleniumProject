@@ -2,3 +2,4 @@ behave
 selenium
 nose
 requests
+schema
