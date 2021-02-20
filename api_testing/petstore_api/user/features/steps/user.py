@@ -18,27 +18,31 @@ def step_impl(context):
                             password=row["password"],
                             phone=row["phone"])
 
+
 @given('the user is active')
 def step_impl(context):
     context.user.status = 1
+
 
 @given('it is created the user')
 @when('it is created the user')
 def step_impl(context):
     header = {'accept': 'application/json', 'Content-type': 'application/json'}
     context.body = {'id': context.user.id,
-            'username': context.user.username,
-            'firstName': context.user.firstname,
-            'lastName': context.user.lastname,
-            'email': context.user.email,
-            'password': context.user.password,
-            'phone': context.user.phone,
-            'userStatus': context.user.status}
+                    'username': context.user.username,
+                    'firstName': context.user.firstname,
+                    'lastName': context.user.lastname,
+                    'email': context.user.email,
+                    'password': context.user.password,
+                    'phone': context.user.phone,
+                    'userStatus': context.user.status}
     context.r = requests.post(USER_ENDPOINT, headers=header, data=json.dumps(context.body))
+
 
 @when('the user information is retrieved')
 def step_impl(context): 
     context.res = requests.get(USER_ENDPOINT + context.user.username)
+
 
 @then('the information is retrieved correcly')
 def step_impl(context):
@@ -49,6 +53,7 @@ def step_impl(context):
 def step_impl(context):
     assert context.r.status_code == 200
 
+
 @then('the information retrieved matches with the created user')
 def step_impl(context):
     response_info = context.res.text
@@ -56,10 +61,9 @@ def step_impl(context):
     for key in json_info:
         assert json_info[key] == context.body[key]
 
+
 @then('the response body model should have the correct model')
 def step_impl(context):
     response_info = context.res.text
     json_info = json.loads(response_info)
     user.validate(json_info)
-
-    
