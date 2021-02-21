@@ -1,8 +1,8 @@
 import requests
 import json
-from api_testing.petstore_api.user.models.user_model import User
-from api_testing.petstore_api.user.contract.get_user_body import user
-from api_testing.petstore_api.user.utils.constants import USER_ENDPOINT
+from petstore_api.user.models.user_model import User
+from petstore_api.user.contract.get_user_body import user
+from petstore_api.user.utils.constants import USER_ENDPOINT
 from behave import given, when, then
 
 
@@ -43,7 +43,7 @@ def step_impl(context):
     context.res = requests.get(USER_ENDPOINT + context.user.username)
 
 
-@then('the information is retrieved correcly')
+@then('the information is retrieved correctly')
 def step_impl(context):
     assert context.res.status_code == 200
 
