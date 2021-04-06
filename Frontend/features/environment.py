@@ -1,10 +1,10 @@
 from behave import fixture, use_fixture
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
-from Store.Utils.generate_random_user import generate_random_user
+from Models.user import User
 from behave.log_capture import capture
 import os
-
+import time
 
 # USE: behave -D BEHAVE_DEBUG_ON_ERROR     (to enable debug-on-error)
 # USE: behave -D BEHAVE_DEBUG_ON_ERROR=yes (to enable debug-on-error)
@@ -30,7 +30,7 @@ def before_scenario(context, scenario):
         scenario.skip("Marked with @skip")
         return
     if "generate_user" in scenario.effective_tags:
-        context.user = generate_random_user()
+        context.user = User.random_user()
     use_fixture(driver, context)
 
 
