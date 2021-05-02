@@ -9,7 +9,8 @@ class RegistrationPage:
     last_name_input = "lastname"
     username_input = "userName"
     password_input = "password"
-
+    iframe_tag = "iframe"
+    recaptcha_checkbox = "recaptcha-checkbox-border"
 
     def __init__(self, driver):
         self.driver = driver
@@ -30,11 +31,25 @@ class RegistrationPage:
     def set_password(self, password):
         self.driver.find_element_by_id(self.password_input).send_keys(password)
 
+    def select_recaptcha_iframe(self):
+        self.driver.switch_to.frame(self.driver.find_element_by_tag_name(self.iframe_tag))
+
+    def check_recaptcha_checkbox(self):
+        self.driver.find_element_by_class_name(self.recaptcha_checkbox).click()
+
+    def switch_to_default_content(self):
+        self.driver.switch_to.default_content()
+
     def input_registration_form(self, first_name, last_name, username, password):
         self.set_first_name(first_name)
         self.set_last_name(last_name)
         self.set_username(username)
         self.set_password(password)
+        import time
+        time.sleep(3)
+        self.select_recaptcha_iframe()
+        self.check_recaptcha_checkbox()
+        self.switch_to_default_content()
 
     def back_to_login_page(self):
         self.driver.find_element_by_id(self.back_to_login_button).click()
