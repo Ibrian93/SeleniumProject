@@ -10,7 +10,7 @@ def step_impl(context):
 def step_impl(context):
     pass
 
-@given('the user introduces the following data:')
+@given('the user introduces the following data')
 def step_impl(context):
     pass
 
@@ -18,10 +18,10 @@ def step_impl(context):
 def step_impl(context):
     pass
 
-@given('the user clicks on "Register"')
+@when('the user clicks on "Register"')
 def step_impl(context):
     pass
 
-@given('the user should be registered')
+@then('the user should be registered')
 def step_impl(context):
     pass

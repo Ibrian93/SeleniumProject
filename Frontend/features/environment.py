@@ -61,8 +61,8 @@ def make_dir(dir):
 
 @fixture
 def driver(context):
-    context.driver = webdriver.Chrome()
-    #context.driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.CHROME)
+    #context.driver = webdriver.Chrome()
+    context.driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.CHROME)
     context.driver.maximize_window()
     yield
     context.driver.quit()
