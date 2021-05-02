@@ -1,4 +1,4 @@
-from Frontend.Pages.registration_page.py import RegistrationPage
+from Pages.registration_page import RegistrationPage
 
 
 class LoginPage:

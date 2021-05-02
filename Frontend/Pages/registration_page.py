@@ -1,4 +1,4 @@
-import Frontend.Pages.LoginPage
+import Pages.login_page
 
 
 class RegistrationPage:
@@ -15,4 +15,4 @@ class RegistrationPage:
 
     def back_to_login_page(self):
         self.driver.find_element_by_id(self.back_to_login_button).click()
-        return Frontend.Pages.LoginPage(self.driver)
+        return Pages.LoginPage(self.driver)

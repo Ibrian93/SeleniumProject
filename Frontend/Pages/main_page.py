@@ -1,4 +1,5 @@
 from Utils.environment import EnvironmentLoader
+from Pages.login_page import LoginPage
 
 
 store_book_url = EnvironmentLoader('environment').loader()
