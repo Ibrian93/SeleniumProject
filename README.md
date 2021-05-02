@@ -1,8 +1,7 @@
 # Automation Portfolio
 In this project you will find out my personal portfolio for test automation purposes.
-Here I have 2 main project:
-- Web Automation
-- API automation
+Currently I am putting all my efforts to build a FE automation framework using the technologies described in the first point.
+
 
 ## 1. Web Automation:
 For the web automation I use the following tecnologies:
@@ -23,48 +22,14 @@ As I am using Behave, which is an automation Framework, I use python as my main 
 ### Web under automation
 https://phptravels.com/demo/ is the main page under test.
 
+### How to run the tests?
+You can chose weather you want to run them locally or dockers. My strongest suggestion is to run the automation tests in dockers. For that reason, the repository has all that it is required to run the tests so you have to only follow these steps:
 
-## 2. API Automation:
-For the API automation I use:
-- Behave
-- Request
-- Python
+- Clone the repository
+- Assure you have the latest version installed
+- cd into the Frontend folder
+- run the following command `docker compose up --build --abort-on-container-exit`
 
-### Why Behave for API testing
-Why do I use behave for API testing? I strongly believe that it is important to address all our tests cases to everyone, so that understand the product under testing as well as its behavior. 
-
-### Request
-Request is the main library for api calls integrated with python.
-
-### API under automation 
-https://petstore.swagger.io/ is the swagger for the API testing
+And you will have the tests running in your local machine! Easy right? I am going to do a in-depth description about all the different steps and tools.
 
 
-# How to run the automated tests?
-## Web Test automation
-To run it, you simply need to run the command behave followed by the route of the location of the feature file.
-
-That is: 
-```
-cd python_testing
-behave home_page/demo_page.feature
-```
-Take into account that if you would like to run the automation tests, you must have the chrome binary in your ${HOME} folder. 
-
-Also, it has been implemented a line of codes where the webdriver is initialized remotely so it could be launched with the Zalenium Dockers tool. For more information, take a look at the following documentation: 
-https://opensource.zalando.com/zalenium/
-
-
-## Api automation test
-In order to run the tests, the project path must be added to the PYTHONPATH. 
-Open your `.bashrc` and add the following config
-```
-PYTHONPATH={path_to_the_project}/selenium_project/api_testing:$PYTHONPATH
-export PYTHONPATH
-```
-that will allow us to add the project to the system environment variables so Python could load all the modules. (It is recommended to reboot your computer)
-
-Once this step has been completed, go to the `selenium_project` folder and launch the tests with the following command
-```
-behave api_testing/petstore_api/user/features/create_user.feature
-```
