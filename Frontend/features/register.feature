@@ -7,8 +7,8 @@ Feature: Register into the Bookstore
 
 	Scenario: A user register succesfully into the bookstore
 		Given the user is not logged into the bookstore main page
-		And the user clicks on "Login"
-		And the user clicks on "New User"
+		And the user goes to the Login Page
+		And the user goes to the New User Page
 		And the user introduces the following data:
 		    | First Name | Last Name | UserName | Password  |
 			|  Testing   |   Test    | TestingT | Testing00!|

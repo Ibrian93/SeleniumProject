@@ -1,4 +1,4 @@
-from Frontend.Utils.environment import EnvironmentLoader
+from Utils.environment import EnvironmentLoader
 
 
 store_book_url = EnvironmentLoader('environment').loader()
