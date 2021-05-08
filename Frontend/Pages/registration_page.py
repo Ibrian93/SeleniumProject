@@ -1,4 +1,5 @@
 import Pages.login_page
+from Utils.selenium_actions import slow_type
 
 
 class RegistrationPage:
@@ -20,16 +21,16 @@ class RegistrationPage:
         #check where it leads
 
     def set_first_name(self, first_name):
-        self.driver.find_element_by_id(self.first_name_input).send_keys(first_name)
+        slow_type(self.driver.find_element_by_id(self.first_name_input), first_name)
 
     def set_last_name(self, last_name):
-        self.driver.find_element_by_id(self.last_name_input).send_keys(last_name)
+        slow_type(self.driver.find_element_by_id(self.last_name_input), last_name)
 
     def set_username(self, username):
-        self.driver.find_element_by_id(self.username_input).send_keys(username)
+        slow_type(self.driver.find_element_by_id(self.username_input), username)
 
     def set_password(self, password):
-        self.driver.find_element_by_id(self.password_input).send_keys(password)
+        slow_type(self.driver.find_element_by_id(self.password_input), password)
 
     def select_recaptcha_iframe(self):
         self.driver.switch_to.frame(self.driver.find_element_by_tag_name(self.iframe_tag))
@@ -45,8 +46,6 @@ class RegistrationPage:
         self.set_last_name(last_name)
         self.set_username(username)
         self.set_password(password)
-        import time
-        time.sleep(3)
         self.select_recaptcha_iframe()
         self.check_recaptcha_checkbox()
         self.switch_to_default_content()

@@ -25,8 +25,7 @@ def step_impl(context):
 
 @given('the user validates the recaptcha')
 def step_impl(context):
-    import time
-    time.sleep(5)
+    pass
 
 @when('the user clicks on "Register"')
 def step_impl(context):
