@@ -14,7 +14,7 @@ services:
     build: .  
     volumes:
       - ./artifacts/feature_errors:/artifacts/feature_errors
-    command: ["./wait-for-selenium-container.sh", "behave", "features"]
+    command: ["./wait-for-selenium-container.sh", "behave", "features", "-D", "driver=remote"]
     depends_on:
       - selenium
 
