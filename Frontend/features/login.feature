@@ -16,9 +16,14 @@ Feature: Login into the bookstore
 		Given the user is not logged into the bookstore main page
 		And the user goes to the Login Page
 		And the user has the following credentials:
-			| username | password    |
-			| ibrian93 | MyTesting83 |
-		And the user introduces the username "<username>"
-		And the user introduces the password "<password>"
+			| username | password     |
+			| ibrian93 | MyTesting83! |
+		And the user introduces the username <username>
+		And the user introduces the password <password>
 		When the user attempts to login
 		Then the login attempts fail with the following message "Invalid username or password!"
+
+		Examples:
+			| username | password    |
+			| ibrian93 | MyTesting8  |
+			| ibrian93 | Mytesting83 |

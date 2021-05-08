@@ -7,6 +7,7 @@ class LoginPage:
     registration_button = "newUser"
     username_field = "userName"
     password_field = "password"
+    error_message_field = ".mb-1"
 
 
     def __init__(self, driver):
@@ -30,3 +31,8 @@ class LoginPage:
 
     def login_user(self):
         self.driver.find_element_by_id(self.login_button).click()
+
+    def get_error_message(self):
+        error_message = self.driver.find_element_by_css_selector(self.error_message_field).text
+        return error_message
+
