@@ -12,7 +12,6 @@ def step_impl(context):
 
 @then('the user should be logged in')
 def step_impl(context):
-    print(context.main_page.username_field)
     main_page_element_present = EC.presence_of_element_located((By.ID, context.main_page.username_field))
     WebDriverWait(context.driver, 3).until(main_page_element_present)
     assert 'ibrian93' in context.main_page.get_logged_username()
