@@ -7,3 +7,6 @@ def step_impl(context):
     context.main_page = MainPage(context.driver)
     context.main_page.go_to_main_page()
 
+@given('the user goes to the Login Page')
+def step_impl(context):
+    context.login_page = context.main_page.go_to_login_page()
