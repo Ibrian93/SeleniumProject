@@ -31,8 +31,10 @@ def before_scenario(context, scenario):
         return
     if "generate_user" in scenario.effective_tags:
         context.user = User.random_user()
-    use_fixture(driver, context)
-
+    if context.config.userdata["driver"] == "remote":
+        use_fixture(driver_remote, context)
+    else:
+        use_fixture(driver_local, context)
 
 def after_step(context, step):
     if BEHAVE_DEBUG_ON_ERROR and step.status == "failed":
@@ -60,10 +62,15 @@ def make_dir(dir):
 
 
 @fixture
-def driver(context):
+def driver_local(context):
     context.driver = webdriver.Chrome()
-    #context.driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.CHROME)
     context.driver.maximize_window()
     yield
     context.driver.quit()
 
+
+@fixture
+def driver_remote(context):
+    context.driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.CHROME)
+    yield
+    context.driver.quit()
