@@ -14,3 +14,10 @@ class TestClass:
         assert isinstance(req.json()["status"], str)
         assert isinstance(req.json()["result"], str)
         assert req.json()["status"] == "Success" and req.json()["result"] == "User authorized successfully."
+
+
+    def test_post_generation_wrong_header(self):
+        data = {"userName": "ibrian93", "password": "MyTesting83!"}
+        headers = {"accept": "application/json", "Content-Type": "application/json"}
+        req = self.account_service.post_generate_token(data=data, headers=headers)
+        assert req.status_code == 400
