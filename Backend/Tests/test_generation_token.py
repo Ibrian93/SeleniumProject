@@ -21,3 +21,10 @@ class TestClass:
         headers = {"accept": "application/json", "Content-Type": "application/json"}
         req = self.account_service.post_generate_token(data=data, headers=headers)
         assert req.status_code == 400
+
+    def test_post_generation_user_does_not_exist(self):
+        data= {"userName": "FakeUser", "password": "FakePassword"}
+        req = self.account_service.post_generate_token(data)
+        assert req.status_code == 200, "This is the status code reported: " + req.status_code
+        assert req.json() is not None
+        assert req.json()["status"] == "Failed" and req.json()["result"] == "User authorization failed."
