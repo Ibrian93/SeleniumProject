@@ -1,7 +1,7 @@
 FROM python:3.9
 
 ENV PYTHONBUFFERED 1
-MAINTAINER brian.icochea
+MAINTAINER Brian Martin Icochea Lopez
 
 COPY ./requirements.txt requirements.txt
 COPY ./wait-for-selenium-container.sh wait-for-selenium-container.sh
