@@ -23,9 +23,17 @@ class TestClass:
 
 
     def test_post_non_authorized_user_missing_password(self):
-        data = Payload(username="ibrian93", password=None).to_dict
+        data = Payload(username="ibrian93", password=None).to_dict()
         req = self.account_service.post_authorized(data)
         assert req.status_code == 400
         assert req.json() is not None
         assert req.json()["code"] == "1200", "The code returned was: " + req.json()["code"]
         assert req.json()["message"] == "UserName and Password required.", "The message returned was: " + req.json()["message"]
+
+    def test_post_authorized_user_not_found(self):
+        data = Payload(username="string", password="string").to_dict()
+        req = self.account_service.post_authorized(data)
+        assert req.status_code == 404
+        assert req.json() is not None
+        assert req.json()["code"] == "1207", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "User not found!", "The message returned was: " + req.json()["message"]
