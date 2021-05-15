@@ -1,11 +1,12 @@
 from Backend.Services.account import Account
+from Backend.Models.auth_payload import Payload
 
 class TestClass:
 
     account_service = Account()
 
     def test_post_authorized_existing_user(self):
-        data = {"userName": "ibrian93", "password": "MyTesting83!"}
+        data = Payload(username="ibrian93", password="MyTesting83!").to_dict()
         req = self.account_service.post_authorized(data)
         assert req.status_code == 200
         assert req.json() is not None
@@ -13,7 +14,7 @@ class TestClass:
         assert req.json() is True
 
     def test_post_non_authorized_user_missing_username(self):
-        data = {"userName": None, "password": "MyTesting83!"}
+        data = Payload(username=None, password="MyTesting83!").to_dict()
         req = self.account_service.post_authorized(data)
         assert req.status_code == 400
         assert req.json() is not None
@@ -22,7 +23,7 @@ class TestClass:
 
 
     def test_post_non_authorized_user_missing_password(self):
-        data = {"userName": "ibrian93", "password": None}
+        data = Payload(username="ibrian93", password=None).to_dict
         req = self.account_service.post_authorized(data)
         assert req.status_code == 400
         assert req.json() is not None
