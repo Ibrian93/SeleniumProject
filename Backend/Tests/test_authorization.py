@@ -1,12 +1,14 @@
 from Backend.Services.account import Account
 from Backend.Models.auth_payload import Payload
+from Backend.Models.user import User
 
 class TestClass:
 
     account_service = Account()
 
     def test_post_authorized_existing_user(self):
-        data = Payload(username="ibrian93", password="MyTesting83!").to_dict()
+        user_data = User().default_user()
+        data = Payload(username=user_data.username, password=user_data.password).to_dict()
         req = self.account_service.post_authorized(data)
         assert req.status_code == 200
         assert req.json() is not None
