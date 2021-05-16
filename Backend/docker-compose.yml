@@ -2,6 +2,8 @@ version: '3'
 
 services: 
     tests:
+        env_file: 
+            - .env
         build:
             context: . 
         command: sh -c "pytest Tests/ --tb line"
