@@ -48,3 +48,11 @@ class TestClass:
         assert req.json() is not None
         assert req.json()["code"] == "1207", "The code returned was: " + req.json()["code"]
         assert req.json()["message"] == "User not found!", "The message returned was: " + req.json()["message"]
+
+    def test_post_created_user_but_no_generated_token(self, random_user):
+        data = Payload(username=random_user.username, password=random_user.password).to_dict()
+        req = self.account_service.post_authorized(data)
+        assert req.status_code == 404
+        assert req.json() is not None
+        assert req.json()["code"] == "1207", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "User not found!", "The message returned was: " + req.json()["message"]

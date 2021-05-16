@@ -14,3 +14,8 @@ class Account:
         endpoint = "/Account/v1/Authorized"
         r = requests.post(url=self.host + endpoint, data=data, headers=headers)
         return r
+
+    def post_user(self, data, headers=None):
+        endpoint = "/Account/v1/User"
+        r = requests.post(url=self.host + endpoint, data=data, headers=headers)
+        return r
