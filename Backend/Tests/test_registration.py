@@ -55,3 +55,13 @@ class TestClass:
         assert req.json() is not None
         assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
         assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
+
+
+    def test_post_user_invalid_data_password_empty_space(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password=" ").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
