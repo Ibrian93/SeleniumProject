@@ -19,4 +19,10 @@ In order to run the tests locally make sure to follow these steps:
 
 ## Run the tests via Dockers :whale: 
 
-ada 
+In order to run the tests via Dockers make sure to follow these steps:
+- Clone the repository 
+- Make sure to pull the latest changes from origin
+- Install the latest version of [Dockers Desktop](https://www.docker.com/products/docker-desktop)
+- Once installed if Dockers didn't start up automatically, do it manually
+- Go to the `Backend` folder
+- Run the following command `docker compose up --build --abort-on-container-exit`
