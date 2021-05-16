@@ -28,3 +28,13 @@ class TestClass:
         assert req.json() is not None
         assert req.json()["code"] == "1200", "The code returned was: " + req.json()["code"]
         assert req.json()["message"] == "UserName and Password required.", "The message returned was: " + req.json()["message"]
+
+    def test_post_user_invalid_data_missing_password(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password=None).to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1200", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "UserName and Password required.", "The message returned was: " + req.json()["message"]
+    
