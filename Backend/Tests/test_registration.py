@@ -137,3 +137,65 @@ class TestClass:
         assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
         assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
 
+    def test_post_user_invalid_password_missing_two_criteria_digit_and_upper_case(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password="test!ngs").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
+
+    def test_post_user_invalid_password_missing_two_criteria_digit_and_special_character(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password="Testings").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
+
+    def test_post_user_invalid_password_missing_two_criteria_digit_and_lower_case(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password="TEST!NGS").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
+
+    def test_post_user_invalid_password_missing_two_criteria_upper_case_and_special_character(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password="t3st1ngs").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
+
+    def test_post_user_invalid_password_missing_two_criteria_upper_case_and_lower_case(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password="12#$5678").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
+
+    def test_post_user_invalid_password_missing_two_criteria_special_character_and_lower_case(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password="T3ST1NGS").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
+
+    def test_post_user_invalid_password_minimum_eight_characters(self):
+        user_data = User().random_user()
+        data = Payload(username=user_data.username, password="T3st!NG").to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1300", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.", "The message returned was: " + req.json()["message"]
