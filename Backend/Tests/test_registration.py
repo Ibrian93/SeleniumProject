@@ -19,3 +19,12 @@ class TestClass:
         assert req.json()["username"] == user_data.username
         assert req.json()["userID"] != ""
         assert req.json()["books"] == []
+
+    def test_post_user_invalid_data_missing_username(self):
+        user_data = User().random_user()
+        data = Payload(username=None, password=user_data.password).to_dict()
+        req = self.account_service.post_user(data)
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1200", "The code returned was: " + req.json()["code"]
+        assert req.json()["message"] == "UserName and Password required.", "The message returned was: " + req.json()["message"]
