@@ -16,7 +16,8 @@ class TestClass:
         assert req.json() is True
 
     def test_post_authorized_new_user_generate_token_should_be_authorized(self, random_user):
-        data = Payload(username=random_user.username, password=random_user.password).to_dict()
+        user_data = random_user[0]
+        data = Payload(username=user_data.username, password=user_data.password).to_dict()
         req_generate_token = self.account_service.post_generate_token(data)
         assert req_generate_token.status_code == 200
         req = self.account_service.post_authorized(data)
@@ -80,7 +81,8 @@ class TestClass:
         assert req.json()["message"] == "UserName and Password required.", "The message returned was: " + req.json()["message"]
 
     def test_post_created_user_but_no_generated_token(self, random_user):
-        data = Payload(username=random_user.username, password=random_user.password).to_dict()
+        user_data = random_user[0]
+        data = Payload(username=user_data.username, password=user_data.password).to_dict()
         req = self.account_service.post_authorized(data)
         assert req.status_code == 200
         assert req.json() is not None

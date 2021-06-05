@@ -19,3 +19,8 @@ class Account:
         endpoint = "/Account/v1/User"
         r = requests.post(url=self.host + endpoint, data=data, headers=headers)
         return r
+
+    def delete_user(self, user_id):
+        endpoint = "/Account/v1/User" + user_id
+        r = requests.delete(url=self.host + endpoint)
+        return r
