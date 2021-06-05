@@ -28,3 +28,10 @@ class TestClass:
         assert req.status_code == 200, "This is the status code reported: " + req.status_code
         assert req.json() is not None
         assert req.json()["status"] == "Failed" and req.json()["result"] == "User authorization failed."
+
+    def test_post_generation_invalid_body(self):
+        req = self.account_service.post_generate_token(data=[])
+        assert req.status_code == 400
+        assert req.json() is not None
+        assert req.json()["code"] == "1200"
+        assert req.json()["message"] == "UserName and Password required."
