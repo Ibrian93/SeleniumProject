@@ -27,3 +27,11 @@ class Account:
             headers = {'Authorization': "Bearer " + auth_token}
         r = requests.delete(url=self.host + endpoint, headers=headers)
         return r
+
+    def get_user(self, user_id, auth_token=None):
+        endpoint = "/Account/v1/User/" + user_id
+        headers = None
+        if auth_token:
+            headers = {'Authorization': 'Bearer ' + auth_token}
+        r = requests.get(url=self.host + endpoint, headers=headers)
+        return r
