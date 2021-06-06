@@ -21,3 +21,9 @@ class TestClass:
         assert req_deletion.status_code == 401
         assert req_deletion.json()["code"] == "1200"
         assert req_deletion.json()["message"] == "User not authorized!"
+
+    def test_deletion_account_non_existing_uuid(self):
+        req_deletion = self.account_service.delete_user(user_id="123457")
+        assert req_deletion.status_code == 401
+        assert req_deletion.json()["code"] == "1200"
+        assert req_deletion.json()["message"] == "User not authorized!"
