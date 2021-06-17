@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out a copy of the repository
+        run: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
       - run: ls -al
