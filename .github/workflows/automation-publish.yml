@@ -17,3 +17,13 @@ jobs:
       - name: Launch Pytest
         working-directory: ./Backend
         run: pytest Tests/
+
+  frontend-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout a copy of the repository
+        uses: actions/checkout@v2
+      - name: Launching docker compose
+        working-directory: ./Frontend
+        run: docker compose up --build --abort-on-container-exit
