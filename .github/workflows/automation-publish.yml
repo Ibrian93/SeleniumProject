@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Set up Python
         uses: actions/setup-python@v2
+      - run: ls -al
       - name: Go to Backend directory
         run: cd Backend/
       - name: Install requirements
