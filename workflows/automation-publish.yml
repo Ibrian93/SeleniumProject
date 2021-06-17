@@ -2,8 +2,7 @@ name: Automation CI
 
 on:
   push:
-    branches:
-      - Testing-github-actions
+    branches: [ Testing-github-actions ]
 
 jobs:
   backend-automation:
