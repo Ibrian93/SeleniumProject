@@ -1,0 +1,16 @@
+name: Automation CI
+
+jobs:
+  backend-automation:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Go to Backend directory
+        run: cd Backend/
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Launch Pytest
+        run: pytest Tests/
