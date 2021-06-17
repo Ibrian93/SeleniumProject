@@ -24,6 +24,9 @@ jobs:
     steps:
       - name: Checkout a copy of the repository
         uses: actions/checkout@v2
+      - name: Checking docker compose version
+        working-directory: ./Frontend
+        run: docker compose version
       - name: Launching docker compose
         working-directory: ./Frontend
         run: docker compose up --build --abort-on-container-exit
