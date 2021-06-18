@@ -27,6 +27,9 @@ jobs:
       - name: Checking docker compose version
         working-directory: ./Frontend
         run: docker-compose version
+      - name: Checking docker compose version
+        working-directory: ./Frontend
+        run: ls -al
       - name: Launching docker compose
         working-directory: ./Frontend
         run: docker-compose up --build --abort-on-container-exit
