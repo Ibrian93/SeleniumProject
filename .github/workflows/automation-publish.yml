@@ -27,7 +27,10 @@ jobs:
       - name: Checking docker compose version
         working-directory: ./Frontend
         run: docker-compose version
-      - name: Checking docker compose version
+      - name: Change permissions on the wait selenium shell script
+        working-directory: ./Frontend
+        run: chmod 777 wait-for-selenium-container.sh
+      - name: Checking list directories
         working-directory: ./Frontend
         run: ls -al
       - name: Launching docker compose
