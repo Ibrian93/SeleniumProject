@@ -29,10 +29,7 @@ jobs:
         run: docker-compose version
       - name: Change permissions on the wait selenium shell script
         working-directory: ./Frontend
-        run: chmod 777 wait-for-selenium-container.sh
-      - name: Checking list directories
-        working-directory: ./Frontend
-        run: ls -al
+        run: chmod 775 wait-for-selenium-container.sh
       - name: Launching docker compose
         working-directory: ./Frontend
         run: docker-compose up --build --abort-on-container-exit
