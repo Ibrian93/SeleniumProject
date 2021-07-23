@@ -32,5 +32,5 @@ jobs:
       - name: Run Frontend Tests 
         working-directory: ./Frontend
         env:
-          SELENIUM_HUB_HOST: 'localhost'
+          SELENIUM_HUB_HOST: 'selenium'
         run: behave features/ -D driver=remote

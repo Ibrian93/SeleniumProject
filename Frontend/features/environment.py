@@ -74,3 +74,9 @@ def driver_remote(context):
     context.driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.CHROME)
     yield
     context.driver.quit()
+
+@fixture
+def driver_zalenium_actions(context):
+    context.driver = webdriver.Remote("http://localhost:4444/wd/hub", DesiredCapabilities.CHROME)
+    yield
+    context.driver.quit()
