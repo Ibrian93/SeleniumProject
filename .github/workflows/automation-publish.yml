@@ -18,18 +18,18 @@ jobs:
         working-directory: ./Backend
         run: pytest Tests/
 
-  frontend-automation:
-    runs-on: ubuntu-latest
+          #frontend-automation:
+          #  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout a copy of the repository
-        uses: actions/checkout@v2
-      - name: Checking docker compose version
-        working-directory: ./Frontend
-        run: docker-compose version
-      - name: Change permissions on the wait selenium shell script
-        working-directory: ./Frontend
-        run: chmod 775 wait-for-selenium-container.sh
-      - name: Launching docker compose
-        working-directory: ./Frontend
-        run: docker-compose up --build --abort-on-container-exit
+          #  steps:
+          #    - name: Checkout a copy of the repository
+          #      uses: actions/checkout@v2
+          #    - name: Checking docker compose version
+          #      working-directory: ./Frontend
+          #      run: docker-compose version
+          #    - name: Change permissions on the wait selenium shell script
+          #      working-directory: ./Frontend
+          #      run: chmod 775 wait-for-selenium-container.sh
+          #    - name: Launching docker compose
+          #      working-directory: ./Frontend
+          #      run: docker-compose up --build --abort-on-container-exit
