@@ -5,7 +5,8 @@ from Backend.Models.auth_payload import Payload
 class TestClass:
 
     account_service = Account()
-    
+
+
     def test_deletion_account_successful(self, random_user):
         req_user_id = random_user[1]["userID"]
         user_data = random_user[0]

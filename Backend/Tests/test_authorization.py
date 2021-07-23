@@ -7,7 +7,7 @@ class TestClass:
 
     account_service = Account()
 
-    @pytest.mark.skip("Under Investigation")    
+    @pytest.mark.skip("Under Investigation")
     def test_post_authorized_existing_user(self):
         user_data = User().default_user()
         data = Payload(username=user_data.username, password=user_data.password).to_dict()
