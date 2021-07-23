@@ -22,14 +22,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout a copy of the repository
+      - name: Check out a copy of the repository
         uses: actions/checkout@v2
-      - name: Checking docker compose version
+      - name: Set up Zalenium
+        uses: ajinx/zalenium@1.1
+      - name: Changing working directory
         working-directory: ./Frontend
-        run: docker-compose version
-      - name: Change permissions on the wait selenium shell script
+      - name: Run Frontend Tests 
         working-directory: ./Frontend
-        run: chmod 775 wait-for-selenium-container.sh
-      - name: Launching docker compose
-        working-directory: ./Frontend
-        run: docker-compose up --build --abort-on-container-exit
+        run: behave features/
