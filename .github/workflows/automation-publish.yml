@@ -33,4 +33,4 @@ jobs:
         working-directory: ./Frontend
         env:
           SELENIUM_HUB_HOST: 'localhost'
-        run: behave features/
+        run: behave features/ -D driver=remote
