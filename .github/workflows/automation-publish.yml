@@ -26,8 +26,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up Zalenium
         uses: ajinx/zalenium@1.1
-      - name: Changing working directory
-        working-directory: ./Frontend
       - name: Run Frontend Tests 
         working-directory: ./Frontend
         run: behave features/
