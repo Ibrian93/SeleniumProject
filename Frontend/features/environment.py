@@ -33,6 +33,8 @@ def before_scenario(context, scenario):
         context.user = User.random_user()
     if context.config.userdata["driver"] == "remote":
         use_fixture(driver_remote, context)
+    if context.config.userdata["driver"] == "actions":
+        use_fixture(driver_zalenium_actions, context)
     else:
         use_fixture(driver_local, context)
 
