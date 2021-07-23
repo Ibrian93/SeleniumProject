@@ -4,7 +4,7 @@ Feature: Register into the Bookstore
 	I want to be able to register into the bookstore
 	So I can record all my activities within the company
 
-
+	@skip
 	Scenario: A user register succesfully into the bookstore
 		Given the user is not logged into the bookstore main page
 		And the user goes to the Login Page
