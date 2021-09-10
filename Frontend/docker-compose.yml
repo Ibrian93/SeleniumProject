@@ -1,20 +1,28 @@
-version: '3'
+version: '3.7'
 
 services:
-  selenium:
-    image: selenium/standalone-chrome
+  chrome:
+    image: selenium/node-chrome:4.0.0-rc-2-prerelease-20210908
+    depends_on:
+      - selenium-hub
     environment:
-      SCREEN_WIDTH: 1920
-      SCREEN_HEIGHT: 1080
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
     ports:
-      - 4444:4444
-    restart: always
+      - "6900:5900"
+
+  selenium-hub:
+    image: selenium/hub:4.0.0-rc-2-prerelease-20210908
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
 
   behave:
     build: .  
-    volumes:
+    volumes: 
       - ./artifacts/feature_errors:/artifacts/feature_errors
     command: ["./wait-for-selenium-container.sh", "behave", "features", "-D", "driver=remote"]
-    depends_on:
-      - selenium
 
