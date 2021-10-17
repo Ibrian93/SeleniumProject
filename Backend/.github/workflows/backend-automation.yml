@@ -1,0 +1,19 @@
+name: Backend CI Workflow
+
+on: [ push ]
+
+jobs:
+  backend-automation:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout a copy of the repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Installing libraries
+        working-directory:  .
+        run: pip install -r requirements.txt
+      - name: Launch tests
+        working-directory: .
+        run: pytest Tests/
