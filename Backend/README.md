@@ -25,4 +25,8 @@ In order to run the tests via Dockers make sure to follow these steps:
 - Install the latest version of [Dockers Desktop](https://www.docker.com/products/docker-desktop)
 - Once installed if Dockers didn't start up automatically, do it manually
 - Go to the `Backend` folder
-- Run the following command `docker compose up --build --abort-on-container-exit`
+- Here you will find a Dockerfile containing the instructions for the build of the image
+- Execute the following command:
+> Docker build -t <optional_tag_name>
+- After the image has been build successfully, run the following command:
+> Docker run -t <optional_tag_name>
