@@ -7,6 +7,11 @@ There are two ways to run the tests:
 * Via Dockers
 
 
+## Table of Contents
+* [RUN API tests locally](#run-api-tests-locally-computer)
+* [Run the tests via dockers](#run-the-tests-via-dockers-whale)
+
+
 ## Run API tests locally :computer:
 In order to run the tests locally make sure to follow these steps:
 - Clone the repository 
