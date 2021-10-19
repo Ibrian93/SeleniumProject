@@ -18,19 +18,19 @@ jobs:
         working-directory: ./Backend
         run: pytest Tests/
 
-  frontend-automation:
-    runs-on: ubuntu-latest
+  #frontend-automation:
+   # runs-on: ubuntu-latest
 
-    steps:
-      - name: Check out a copy of the repository
-        uses: actions/checkout@v2
-      - name: Set up Zalenium
-        uses: ajinx/zalenium@1.1
-      - name: Installing libraries
-        working-directory: ./Frontend
-        run: pip install -r requirements.txt
-      - name: Run Frontend Tests 
-        working-directory: ./Frontend
-        env:
-          SELENIUM_HUB_HOST: 'localhost'
-        run: behave features/ -D driver=actions
+    #steps:
+     # - name: Check out a copy of the repository
+      #  uses: actions/checkout@v2
+      #- name: Set up Zalenium
+      #  uses: ajinx/zalenium@1.1
+      #- name: Installing libraries
+      #  working-directory: ./Frontend
+      #  run: pip install -r requirements.txt
+      #- name: Run Frontend Tests 
+      #  working-directory: ./Frontend
+       # env:
+       #   SELENIUM_HUB_HOST: 'localhost'
+       # run: behave features/ -D driver=actions
