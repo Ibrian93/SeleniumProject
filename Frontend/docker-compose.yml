@@ -3,6 +3,8 @@ version: '3.7'
 services:
   behave:
     build: .
+    depends_on:
+      - chrome
     volumes: 
       - ./artifacts/feature_errors:/artifacts/feature_errors
     command: ["./wait-for-selenium-container.sh", "behave", "features/", "-D", "driver=remote"]
