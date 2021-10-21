@@ -3,6 +3,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
 from Models.user import User
 from behave.log_capture import capture
+from webdriver_manager.chrome import ChromeDriverManager
 import os
 import time
 
@@ -65,7 +66,7 @@ def make_dir(dir):
 
 @fixture
 def driver_local(context):
-    context.driver = webdriver.Chrome()
+    context.driver = webdriver.Chrome(ChromeDriverManager().install())
     context.driver.maximize_window()
     yield
     context.driver.quit()
