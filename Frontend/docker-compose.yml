@@ -1,6 +1,12 @@
 version: '3.7'
 
 services:
+  behave:
+    build: .
+    volumes: 
+      - ./artifacts/feature_errors:/artifacts/feature_errors
+    command: ["./wait-for-selenium-container.sh", "behave", "features/", "-D", "driver=remote"]
+
   chrome:
     image: selenium/node-chrome:4.0.0-rc-2-prerelease-20210908
     depends_on:
@@ -20,9 +26,4 @@ services:
       - "4443:4443"
       - "4444:4444"
 
-  behave:
-    build: .  
-    volumes: 
-      - ./artifacts/feature_errors:/artifacts/feature_errors
-    command: ["./wait-for-selenium-container.sh", "behave", "features", "-D", "driver=remote"]
-
+  

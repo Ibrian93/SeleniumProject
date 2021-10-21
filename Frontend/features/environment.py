@@ -3,7 +3,6 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
 from Models.user import User
 from behave.log_capture import capture
-from webdriver_manager.chrome import ChromeDriverManager
 import os
 import time
 
@@ -36,7 +35,7 @@ def before_scenario(context, scenario):
         use_fixture(driver_remote, context)
     if context.config.userdata["driver"] == "actions":
         use_fixture(driver_zalenium_actions, context)
-    else:
+    if context.config.userdata["driver"] == "local":
         use_fixture(driver_local, context)
 
 def after_step(context, step):
@@ -66,6 +65,7 @@ def make_dir(dir):
 
 @fixture
 def driver_local(context):
+    from webdriver_manager.chrome import ChromeDriverManager
     context.driver = webdriver.Chrome(ChromeDriverManager().install())
     context.driver.maximize_window()
     yield
@@ -74,7 +74,7 @@ def driver_local(context):
 
 @fixture
 def driver_remote(context):
-    context.driver = webdriver.Remote("http://selenium-hub:4442/wd/hub", DesiredCapabilities.CHROME)
+    context.driver = webdriver.Remote("http://selenium-hub:4444/wd/hub", DesiredCapabilities.CHROME)
     yield
     context.driver.quit()
 
