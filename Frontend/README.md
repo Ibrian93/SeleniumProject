@@ -1,18 +1,22 @@
-## Frontend Project
+# Frontend Project
 
-# Pre-requisit
-Before we can start launching this project with either Docker, Github Actions or Locally, it is required to download the latest chromedriver binary file.
-Here is the link to the download page: https://chromedriver.chromium.org/downloads
-Make sure that you download the correct binary file, that is: check your Chrome Browser version and make sure you are installing a chromedriver that supports it.
+## Purpose of this project
+The main goal with this project is to propose an automation framework based on the following:
+* Python
+* BDD
+* Docker
 
-- Install chromedriver in your HOME directory
-In order to make the process simplier, it is recommender to set the chromedriver binary into the HOME directory.
+As we are working with Selenium, it is also implemented the [Page Object Pattern](https://www.selenium.dev/documentation/guidelines/page_object_models/)
 
-## Mac Version
-If you owe a Mac, the steps are simple:
+In order to run the tests, you have two options:
 
-- Open your terminal
-- Type echo $HOME so you can confirm what is your default directory 
-- Move the chromedriver binary you have downloaded in the previous step to the $HOME directory
+## Run the tests locally
+As in this project it is used the webdriver manager package, it is no longer required to download the chromedriver binary file. 
+If you are still interested though, please feel free to check [here](https://chromedriver.chromium.org/downloads)
 
-And then you should be able to launch the frontend automation tests
+When inside the `Frontend` folder, execute the following command:
+> `behave features/ -D driver=local`
+
+Then you will have your tests running. Take into account that they are not running in headless mode, so a chrome window will spawn.
+
+
