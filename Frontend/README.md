@@ -19,4 +19,9 @@ When inside the `Frontend` folder, execute the following command:
 
 Then you will have your tests running. Take into account that they are not running in headless mode, so a chrome window will spawn.
 
+## Run the tests with Docker
+Before running the tests with Docker, please make sure the Docker daemon is up and running.
+Once done, run the following command: 
+> `docker compose up --build --abort-on-container-exit`
+And voilà, there you have running the test in a docker container
 
